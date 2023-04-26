@@ -1,0 +1,12 @@
+﻿@using NBP.Models.Exchange;
+@model ExchangeRateTable
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @foreach (var i in Model.Rates)
+    {
+        <h4>MID for @i.No : @i.Mid</h4>
+    }
+</div>

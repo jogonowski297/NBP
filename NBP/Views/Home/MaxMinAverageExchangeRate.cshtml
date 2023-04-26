@@ -1,0 +1,14 @@
+﻿@using NBP.Models.Exchange;
+@model IOrderedEnumerable<ExchangeRate>
+@{
+}
+
+<div class="text-center">
+    <h3>Min: @Model.First().Mid</h3>
+    <h3>Max: @Model.Last().Mid</h3>
+    <br />
+    @foreach(var i in Model)
+    {
+        <h5>@i.No : @i.Mid</h5>
+    }
+</div>

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>CalculateAverageExchangeRate</h1>
+    <form asp-controller="home" asp-action="CalculateAverageExchangeRate" asp-route-date="" asp-route-code="" method="get">
+        <label for="code">Kod:</label>
+        <input type="text" name="codeCAVER"/>
+
+        <label for="date">Data:</label>
+        <input type="date" name="dateCAVER" />
+        
+        <button type="button" onclick="CalculateAverageExchangeRate()">Find</button>
+
+    </form>
+</div>
+
+<div class="text-center">
+    <h1>MaxMinAverageExchangeRate</h1>
+    <form asp-controller="home" asp-action="MaxMinAverageExchangeRate" asp-route-date="" asp-route-code="" method="get">
+        <label for="code">Kod:</label>
+        <input type="text" name="codeMMAER" />
+
+        <label for="count">Number</label>
+        <input type="number" name="countMMAER" max="255" />
+
+        <button type="button" onclick="MaxMinAverageExchangeRate()">Find</button>
+
+    </form>
+</div>
+
+<div class="text-center">
+    <h1>BidAskRate</h1>
+    <form asp-controller="home" asp-action="BidAskRate" asp-route-date="" asp-route-code="" method="get">
+        <label for="code">Kod:</label>
+        <input type="text" name="codeBAR" />
+
+        <label for="count">Number</label>
+        <input type="number" name="countBAR" max="255" />
+
+        <button type="button" onclick="BidAskRate()">Find</button>
+
+    </form>
+</div>
+
+<script>
+    function CalculateAverageExchangeRate() {
+        var date = document.getElementsByName("dateCAVER")[0].value;
+        var code = document.getElementsByName("codeCAVER")[0].value;
+        var url = "/home/CalculateAverageExchangeRate/" + date + "/" + code;
+        window.location.href = url;
+    }
+
+    function MaxMinAverageExchangeRate() {
+        var count = document.getElementsByName("countMMAER")[0].value;
+        var code = document.getElementsByName("codeMMAER")[0].value;
+        var url = "/home/MaxMinAverageExchangeRate/" + code + "/" + count;
+        window.location.href = url;
+    }
+
+    function BidAskRate() {
+        var count = document.getElementsByName("countBAR")[0].value;
+        var code = document.getElementsByName("codeBAR")[0].value;
+        var url = "/home/BidAskRate/" + code + "/" + count;
+        window.location.href = url;
+    }
+</script>
